@@ -1,5 +1,5 @@
-const mongoose = require('mongoose)
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 // Create Schema
 const SessionSchema = new Schema({
@@ -10,6 +10,6 @@ const SessionSchema = new Schema({
 });
 
 // Create model for session
-const Session = mongoose.model('sesssion', SessionSchema)
+const Session = mongoose.model('sesssion', SessionSchema);
 
-module.exports = Session
+module.exports = Session;
