@@ -1,11 +1,11 @@
 import React from 'react';
-import Todo from './components/Todo';
+import Session from './components/Session';
 import './App.css';
 
 const App = () => {
   return (
     <div className="App">
-      <Todo />
+      <Session />
     </div>
   );
 };

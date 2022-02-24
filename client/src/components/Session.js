@@ -1,53 +1,53 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Input from './Input';
-import ListTodo from './ListTodo';
+import ListBar from './ListBar';
 
-class Todo extends Component {
+class Session extends Component {
   state = {
-    todos: [],
+    bars: [],
   };
 
   componentDidMount() {
-    this.getTodos();
+    this.getBars();
   }
 
-  getTodos = () => {
+  getBars = () => {
     axios
-      .get('/api/todos')
+      .get('/api/session')
       .then((res) => {
         if (res.data) {
           this.setState({
-            todos: res.data,
+            bars: res.data,
           });
         }
       })
       .catch((err) => console.log(err));
   };
 
-  deleteTodo = (id) => {
+  deleteBar = (id) => {
     axios
-      .delete(`/api/todos/${id}`)
+      .delete(`/api/session/${id}`)
       .then((res) => {
         if (res.data) {
-          this.getTodos();
+          this.getBars();
         }
       })
       .catch((err) => console.log(err));
   };
 
   render() {
-    let { todos } = this.state;
+    let { bars } = this.state;
 
     return (
       <div>
-        <h1>My Todo(s)</h1>
-        <Input getTodos={this.getTodos} />
-        <ListTodo todos={todos} deleteTodo={this.deleteTodo} />
+        <h1>My Session(s)</h1>
+        <Input getBars={this.getBars} />
+        <ListBar session={bars} deleteSession={this.deleteBar} />
       </div>
     );
   }
 }
 
-export default Todo;
+export default Session;
 
