@@ -1,14 +1,16 @@
-import React from 'react';
-import Session from './components/Session';
-import './App.css';
+import React from "react";
+import Session from "./components/Session";
+import MapContainer from "./components/Map";
+import "./App.css";
+
 
 const App = () => {
   return (
-    <div className="App">
-      <Session />
-    </div>
+	  <div className="App">
+	  	<MapContainer />
+		<Session />
+	  </div>
   );
 };
 
 export default App;
-
