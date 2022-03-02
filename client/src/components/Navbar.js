@@ -6,10 +6,16 @@ const Navbar = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/">Map</Link>
+          <Link to="/maps">Map</Link>
         </li>
         <li>
-          <Link to="/session">Session</Link>
+          <Link to="/sessions">Session</Link>
+        </li>
+        <li>
+          <Link to="/register">Register</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
         </li>
       </ul>
     </nav>

@@ -14,7 +14,7 @@ class Session extends Component {
 
   getBars = () => {
     axios
-      .get('/api/session')
+      .get('/api/sessions')
       .then((res) => {
         if (res.data) {
           this.setState({
@@ -27,7 +27,7 @@ class Session extends Component {
 
   deleteBar = (id) => {
     axios
-      .delete(`/api/session/${id}`)
+      .delete(`/api/sessions/${id}`)
       .then((res) => {
         if (res.data) {
           this.getBars();

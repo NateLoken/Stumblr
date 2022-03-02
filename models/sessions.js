@@ -10,7 +10,7 @@ const SessionSchema = new Schema({
 });
 
 // Create model for session
-const Session = mongoose.model('session', SessionSchema);
+const Session = mongoose.model('sessions', SessionSchema);
 
 module.exports = Session;
 

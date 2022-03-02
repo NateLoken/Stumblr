@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const routes = require('./routes/api');
+const sessions = require('./routes/api/sessions');
 const passport = require("passport");
 const users = require("./routes/api/users");
 require('dotenv').config()
@@ -14,6 +14,7 @@ app.use(
     extended: false
   })
 );
+app.use(bodyParser.json());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
@@ -23,7 +24,7 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 // Routes
-app.use("/api/users", users);
+app.use("./api/users", users);
 
 const port = process.env.PORT || 5000;
 
@@ -42,9 +43,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(bodyParser.json());
 
-app.use('/api', routes);
+
+app.use('/api', sessions);
 
 app.use((err, req, res, next) => {
   console.log(err);

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Session = require('../models/sessions');
+const Session = require('../../models/sessions');
 
 router.get('/session', (req, res, next) => {
   // This will return all the data, exposing only the id and action field to the client
