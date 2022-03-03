@@ -11,7 +11,7 @@ class Input extends Component {
 
     if (task.action && task.action.length > 0) {
       axios
-        .post('/api/session', task)
+        .post('/api/register', task)
         .then((res) => {
           if (res.data) {
             this.props.getBars();
