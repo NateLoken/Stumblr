@@ -26,9 +26,10 @@ button {
   border: none;
   margin-left: 10px;
   font-size: 25px;
-  background: #101113;
+  background: #ffffff;
   border-radius: 5px;
-  color: #787a80;
+  opacity: 70%;
+  color: #000000;
   cursor: pointer;
 }
 
@@ -39,8 +40,8 @@ button:focus {
 ul {
   list-style: none;
   text-align: left;
-  padding: 15px;
-  background: #171a1f;
+  padding: 10px;
+  background: none;
   border-radius: 5px;
 }
 
@@ -48,7 +49,8 @@ li {
   padding: 15px;
   font-size: 1.5rem;
   margin-bottom: 15px;
-  background: #282c34;
+  background: #ffffff;
+  opacity: 90%;
   border-radius: 5px;
   overflow-wrap: break-word;
   cursor: pointer;

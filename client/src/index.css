@@ -5,11 +5,31 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  background-color: #282c34;
-  color: #787a80;
+  color: rgb(0, 0, 0);
+  background:
+    linear-gradient(#36ffd0, transparent),
+    linear-gradient(to top left, #ff0062, transparent),
+    linear-gradient(to top right, #289ec9, transparent);
+  background-size: 400% 400%;
+  background-blend-mode: screen;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  animation: change 10s ease-in-out infinite;
+  position: relative;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+@keyframes change {
+    0%{
+      background-position: 0 50%;
+    }
+    50%{
+      background-position: 100% 50%;
+    }
+    100%{
+      background-position: 0 50%;
+    }
+}

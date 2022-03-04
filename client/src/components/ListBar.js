@@ -12,7 +12,7 @@ const ListBars = ({ session, deleteSession }) => {
           );
         })
       ) : (
-        <li>No session(s) left</li>
+        <li>No bars in session</li>
       )}
     </ul>
   );
