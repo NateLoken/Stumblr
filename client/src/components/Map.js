@@ -72,8 +72,6 @@ function Map() {
         );
       })}
 
-      {console.log(selected)}
-
       {selected ? (
         <InfoWindow
           position={selected.geometry.location}
