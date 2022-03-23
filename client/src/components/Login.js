@@ -15,15 +15,14 @@ class Login extends Component {
     };
   }
 
-
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/map"); // push user to map when they login
+  componentDidUpdate(prevProps) {
+    if (prevProps.auth.isAuthenticated) {
+      // this.props.history is undeclared here? Problem Spot
+      this.props.history.push("/"); // push user to map when they login
     }
-    if (nextProps.errors) {
+    if (this.props.auth !== prevProps.auth && prevProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: prevProps.errors
       });
     }
   }
@@ -34,10 +33,13 @@ class Login extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+
     const userData = {
       email: this.state.email,
       password: this.state.password
     };
+    // since we handle the redirect within our component, we don't 
+    // need to pass in this.props.history as a parameter
     this.props.loginUser(userData);
   };
 

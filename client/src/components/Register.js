@@ -38,10 +38,10 @@ class Register extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps && prevProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: prevProps.errors
       });
     }
   }
