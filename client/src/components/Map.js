@@ -1,4 +1,5 @@
 import React from "react";
+import ListBars from "./BarList";
 import {
   GoogleMap,
   InfoWindow,
@@ -24,8 +25,8 @@ function Map() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
-  const [bars, setBars] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
+  const [bars, setBars] = React.useState([]);
 
   const mapRef = React.useRef();
   const onLoad = React.useCallback((map) => {
@@ -61,32 +62,39 @@ function Map() {
   if (!isLoaded) return "Loading Maps";
 
   return (
-    <GoogleMap options={options} mapContainerStyle={mapStyles} onLoad={onLoad}>
-      {bars.map((item) => {
-        return (
-          <Marker
-            key={item.place_id}
-            position={item.geometry.location}
-            onClick={() => setSelected(item)}
-          />
-        );
-      })}
+    <div>
+      <GoogleMap
+        options={options}
+        mapContainerStyle={mapStyles}
+        onLoad={onLoad}
+      >
+        {bars.map((item) => {
+          return (
+            <Marker
+              key={item.place_id}
+              position={item.geometry.location}
+              onClick={() => setSelected(item)}
+            />
+          );
+        })}
 
-      {selected ? (
-        <InfoWindow
-          position={selected.geometry.location}
-          onCloseClick={() => {
-            setSelected(null);
-          }}
-        >
-          <div>
-            <h2>{selected.name}</h2>
-            <h2>{selected.rating}</h2>
-            <h2>{selected.price_level}</h2>
-          </div>
-        </InfoWindow>
-      ) : null}
-    </GoogleMap>
+        {selected ? (
+          <InfoWindow
+            position={selected.geometry.location}
+            onCloseClick={() => {
+              setSelected(null);
+            }}
+          >
+            <div>
+              <h2>{selected.name}</h2>
+              <h2>{selected.rating}</h2>
+              <h2>{selected.price_level}</h2>
+            </div>
+          </InfoWindow>
+        ) : null}
+      </GoogleMap>
+      <ListBars bars={bars} />
+    </div>
   );
 }
 
