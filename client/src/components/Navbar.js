@@ -17,6 +17,9 @@ const Navbar = () => {
         <li>
           <Link to="/login">Login</Link>
         </li>
+        <li>
+          <Link to="/login-google">GoogleLoginComponent</Link>
+        </li>
       </ul>
     </nav>
   );
