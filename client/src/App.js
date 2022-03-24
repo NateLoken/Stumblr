@@ -23,7 +23,7 @@ const App = () => {
             <Route path="/sessions" element={<Session />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/login-google" element={<GoogleLoginComponent />} />
+            <Route path="/Login%20with%20Google" element={<GoogleLoginComponent />} />
           </Routes>
         </div>
       </Router>

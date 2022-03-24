@@ -37,25 +37,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    // <nav>
-    //   <ul>
-    //     <li>
-    //       <Link to="/map">Map</Link>
-    //     </li>
-    //     <li>
-    //       <Link to="/sessions">Session</Link>
-    //     </li>
-    //     <li>
-    //       <Link to="/register">Register</Link>
-    //     </li>
-    //     <li>
-    //       <Link to="/login">Login</Link>
-    //     </li>
-    //     <li>
-    //       <Link to="/login-google">GoogleLoginComponent</Link>
-    //     </li>
-    //   </ul>
-    // </nav>
+
     <AppBar className="navbar" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
