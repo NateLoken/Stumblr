@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 // import { bgcolor } from '@mui/system';
 import logo from "../assets/images/icon.png"
 
-const pages = ['Map', 'Sessions', 'Register','Login','Login with Google'];
+const pages = ['Map', 'Sessions','Login with Google'];
 const settings = ['Profile', 'Badges', 'Settings'];
 
 const ResponsiveAppBar = () => {

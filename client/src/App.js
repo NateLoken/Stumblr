@@ -7,8 +7,6 @@ import store from "./store";
 import Session from "./components/Session";
 import Map from "./components/Map";
 import Navbar from "./components/Navbar";
-import Register from "./components/Register";
-import Login from "./components/Login";
 import GoogleLoginComponent from "./components/GoogleButton";
 import "./App.css";
 
@@ -21,8 +19,6 @@ const App = () => {
           <Routes>
             <Route path="/map" exact element={<Map />} />
             <Route path="/sessions" element={<Session />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/Login%20with%20Google" element={<GoogleLoginComponent />} />
           </Routes>
         </div>
