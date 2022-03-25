@@ -1,6 +1,6 @@
-# <img src="./icon.png" height="50" width="50"> Stumblr
+# <img src="./client/public/icon.png" height="50" width="50"> Stumblr
 
 ## Description
 Have you ever wanted to go to a bar for some food and drinks without breaking the bank? Have you and some friends been interested in bar hopping, but don’t have the time or energy to create an itinerary from websites and word-of-mouth suggestions? Have you ever just wanted to find a new place to have a drink and socialize? Allow me to introduce Stumblr, the best drinking buddy you’ll ever have. This phone application gives people the luxury of enjoying each bar they visit without the need to do detailed research on the fly since all the hard work has been done for them. 
 
-[Wireframe for Stumblr](https://www.figma.com/file/7bjdOzmBcKnLOZthHwKnFf/Stumblr-Wireframe?node-id=2%3A6)
+[Wireframe for Stumblr](https://www.figma.com/file/7bjdOzmBcKnLOZthHwKnFf/Stumblr-?node-id=2%3A6)x

@@ -16,7 +16,7 @@ const defaultCenter = {
   lng: -106.780449
 };
 
-function Map() {
+function Map({setCoordinates, coordinates}) {
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-maps-script",
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
@@ -27,7 +27,7 @@ function Map() {
       <GoogleMap
         options={options}
         mapContainerStyle={mapStyles}
-        center={defaultCenter}
+        center={coordinates}
       />
     );
   };

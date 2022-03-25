@@ -11,6 +11,12 @@ import GoogleLoginComponent from "./components/GoogleButton";
 import "./App.css";
 
 const App = () => {
+  const [coordinates, setCoordinates] = useState({});
+  useEffect(()=>{
+    navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}})=>{
+      setCoordinates({lat:latitude, lng:longitude});
+    });
+  }, []);
   return (
     <Provider store={store}>
       <Router>
