@@ -7,11 +7,12 @@ class Input extends Component {
   };
 
   addBar = () => {
+    // console.log(this.state.action)
     const task = { action: this.state.action };
 
     if (task.action && task.action.length > 0) {
       axios
-        .post('/api/session', task)
+        .post('/api/sessions', task)
         .then((res) => {
           if (res.data) {
             this.props.getBars();

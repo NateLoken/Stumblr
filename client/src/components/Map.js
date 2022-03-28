@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 
 const options = {
@@ -16,11 +16,17 @@ const defaultCenter = {
   lng: -106.780449
 };
 
-function Map({setCoordinates, coordinates}) {
+function Map() {
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-maps-script",
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
   });
+const [coordinates, setCoordinates] = useState({});
+useEffect(()=>{
+  navigator.geolocation.getCurrentPosition(({coords:{latitude, longitude}})=>{
+    setCoordinates({lat:latitude, lng:longitude});
+  });
+}, []);
 
   const renderMap = () => {
     return (

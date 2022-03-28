@@ -1,10 +1,5 @@
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import { Provider } from "react-redux";
-import store from "./store";
-import React, { useEffect, useState } from "react";
-
+import React from "react";
 import Session from "./components/Session";
 import Map from "./components/Map";
 import Navbar from "./components/Navbar";
@@ -12,14 +7,7 @@ import GoogleLoginComponent from "./components/GoogleButton";
 import "./App.css";
 
 const App = () => {
-  const [coordinates, setCoordinates] = useState({});
-  useEffect(()=>{
-    navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}})=>{
-      setCoordinates({lat:latitude, lng:longitude});
-    });
-  }, []);
   return (
-    <Provider store={store}>
       <Router>
         <div className="App">
           <Navbar />
@@ -30,7 +18,6 @@ const App = () => {
           </Routes>
         </div>
       </Router>
-    </Provider>
   );
 };
 
