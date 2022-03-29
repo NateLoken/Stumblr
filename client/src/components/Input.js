@@ -12,7 +12,7 @@ class Input extends Component {
 
     if (task.action && task.action.length > 0) {
       axios
-        .post('/api/sessions', task)
+        .post('/api/session', task)
         .then((res) => {
           if (res.data) {
             this.props.getBars();
