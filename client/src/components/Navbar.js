@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -14,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 // import { bgcolor } from '@mui/system';
 import logo from "../assets/images/icon.png"
 
-const pages = ['Map', 'Sessions','Login with Google'];
+const pages = ['Map', 'Sessions', 'Login with Google'];
 const settings = ['Profile', 'Badges', 'Settings'];
 
 const ResponsiveAppBar = () => {
@@ -41,7 +42,7 @@ const ResponsiveAppBar = () => {
     <AppBar className="navbar" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img id="logo" alt="A ribbon with Stumblr on it with a martini glass behind it all within a map node." src={logo}/>
+          <img id="logo" alt="A ribbon with Stumblr on it with a martini glass behind it all within a map node." src={logo} />
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -50,7 +51,7 @@ const ResponsiveAppBar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              // color="inherit"
+            // color="inherit"
             >
               <MenuIcon />
             </IconButton>
@@ -72,11 +73,18 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+            
+                
+                <MenuItem component={Link} to="/Map">
+                  Map
                 </MenuItem>
-              ))}
+                <MenuItem component={Link} to="/Sessions">
+                  Sessions
+                </MenuItem>
+                <MenuItem component={Link} to="/Login%20with%20Google">
+                  Login with Google
+                </MenuItem>
+            
             </Menu>
           </Box>
           <Typography
