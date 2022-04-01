@@ -11,11 +11,6 @@ const mapStyles = {
   width: "100%"
 };
 
-const defaultCenter = {
-  lat: 32.316238,
-  lng: -106.780449
-};
-
 function Map() {
   const { isLoaded, loadError } = useJsApiLoader({
     id: "google-maps-script",
