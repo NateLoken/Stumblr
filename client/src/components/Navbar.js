@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 // import { bgcolor } from '@mui/system';
 import logo from "../assets/images/icon.png"
 
-const pages = ['Map', 'Sessions', 'Login with Google'];
+const pages = ['Find Bars', 'Sessions', 'Login with Google'];
 const settings = ['Profile', 'Badges', 'Settings'];
 
 const ResponsiveAppBar = () => {
@@ -73,10 +73,8 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-            
-                
-                <MenuItem component={Link} to="/Map">
-                  Map
+                <MenuItem component={Link} to="/Find-Bars">
+                  Find Bars
                 </MenuItem>
                 <MenuItem component={Link} to="/Sessions">
                   Sessions

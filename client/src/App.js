@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import Session from "./components/Session";
-import Map from "./components/Map";
+import FindBars from "./components/FindBars";
 import Navbar from "./components/Navbar";
 import GoogleLoginComponent from "./components/GoogleButton";
 import "./App.css";
@@ -12,7 +12,7 @@ const App = () => {
         <div className="App">
           <Navbar />
           <Routes>
-            <Route path="/map" exact element={<Map />} />
+            <Route path="/find-bars" exact element={<FindBars />} />
             <Route path="/sessions" element={<Session />} />
             <Route path="/Login%20with%20Google" element={<GoogleLoginComponent />} />
           </Routes>
