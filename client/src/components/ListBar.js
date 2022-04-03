@@ -1,3 +1,4 @@
+// Displays bars in list format for a session
 import React from 'react';
 
 const ListBars = ({ session, deleteSession }) => {

@@ -1,3 +1,4 @@
+// Displays bars in list format when user is doing a search
 import React from "react";
 
 function ListBars({ bars }) {
