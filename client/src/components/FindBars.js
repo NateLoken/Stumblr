@@ -17,7 +17,14 @@ const mapStyles = {
   width: "100%",
 };
 
+const mapBeGone = {
+  height: "0vh",
+  width: "0%",
+};
+
 const libraries = ["places"];
+
+const isMapView = false;
 
 function Map() {
   const { isLoaded, loadError } = useJsApiLoader({
@@ -61,41 +68,60 @@ function Map() {
   if (loadError) return "Error Loading Maps";
   if (!isLoaded) return "Loading Maps";
 
-  return (
-    <div>
-      <GoogleMap
-        options={options}
-        mapContainerStyle={mapStyles}
-        onLoad={onLoad}
-      >
-        {bars.map((item) => {
-          return (
-            <Marker
-              key={item.place_id}
-              position={item.geometry.location}
-              onClick={() => setSelected(item)}
-            />
-          );
-        })}
+  // Displays map view of bar if it is selected
+  if (isMapView) {
+    return (
+      <div>
+        <GoogleMap
+          options={options}
+          mapContainerStyle={mapStyles}
+          onLoad={onLoad}
+        >
+          {bars.map((item) => {
+            return (
+              <Marker
+                key={item.place_id}
+                position={item.geometry.location}
+                onClick={() => setSelected(item)}
+              />
+            );
+          })}
 
-        {selected ? (
-          <InfoWindow
-            position={selected.geometry.location}
-            onCloseClick={() => {
-              setSelected(null);
-            }}
-          >
-            <div>
-              <h2>{selected.name}</h2>
-              <h2>{selected.rating}</h2>
-              <h2>{selected.price_level}</h2>
-            </div>
-          </InfoWindow>
-        ) : null}
-      </GoogleMap>
-      <ListBars bars={bars} />
-    </div>
-  );
+          {selected ? (
+            <InfoWindow
+              position={selected.geometry.location}
+              onCloseClick={() => {
+                setSelected(null);
+              }}
+            >
+              <div>
+                <h2>{selected.name}</h2>
+                <h2>{selected.rating}</h2>
+                <h2>{selected.price_level}</h2>
+              </div>
+            </InfoWindow>
+          ) : null}
+        </GoogleMap>
+        <br />
+      </div>
+    );
+  }
+
+  // Displays list view of bar if it is selected
+  if (!isMapView) {
+    return (
+      <div>
+        {/* Must render fake map in order to populate bar list */}
+        <GoogleMap
+          options={options}
+          mapContainerStyle={mapBeGone}
+          onLoad={onLoad}
+        >
+        </GoogleMap>
+        <ListBars bars={bars} />
+      </div>
+    );
+  }
 }
 
 export default React.memo(Map);
