@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "axios": "^0.26.0",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
@@ -8,7 +9,7 @@
     "polish": "^0.2.3",
     "react-spacer": "^1.3.0",
     "styled-components": "^5.3.5"
-  },
+ },
   "name": "stumblr",
   "description": "## Description Have you ever wanted to go to a bar for some food and drinks without breaking the bank? Have you and some friends been interested in bar hopping, but don’t have the time or energy to create an itinerary from websites and word-of-mouth suggestions? Have you ever just wanted to find a new place to have a drink and socialize? Allow me to introduce Stumblr, the best drinking buddy you’ll ever have. This phone application gives people the luxury of enjoying each bar they visit without the need to do detailed research on the fly since all the hard work has been done for them.",
   "version": "1.0.0",
