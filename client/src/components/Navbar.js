@@ -73,7 +73,7 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-                <MenuItem component={Link} to="/Find-Bars">
+                <MenuItem component={Link} to="/Find%20Bars">
                   Find Bars
                 </MenuItem>
                 <MenuItem component={Link} to="/Sessions">
