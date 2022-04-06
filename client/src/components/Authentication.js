@@ -5,7 +5,6 @@ class auth extends Component {
   render() {
     return (
       <form action="http://localhost:5000/auth/google">
-          
           <button type="submit" className="google-button">
             
           <span className="google-button__icon">
@@ -13,10 +12,8 @@ class auth extends Component {
             </span>
             <span className="google-button__text">Sign in with Google</span>
           </button>
-
-        </form>
+       </form>
     );
-
   }
 }
 export default auth;
