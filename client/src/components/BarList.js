@@ -96,7 +96,7 @@ function ListBars({ bars }) {
                   </CardContent>
                 </Collapse>
               </Card>
-            </li>
+           </li>
           )
         })
       ) : (
