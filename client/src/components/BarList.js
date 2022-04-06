@@ -64,7 +64,7 @@ function ListBars({ bars }) {
                   </Typography>
                 </CardContent>
               </Card>
-            </li>
+           </li>
           )
         })
       ) : (
