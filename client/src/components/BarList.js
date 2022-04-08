@@ -34,18 +34,20 @@ function ListBars({ bars }) {
   const [value, setValue] = React.useState(2)
 
   console.log(bars)
-
-  function addBar(bar) {
-    const task = {
-      action: bar,
+  function addBar(name, location) {
+    const bar = {
+      name: name,
+      location: location
     }
 
-    if (task.action && task.action.length > 0) {
+    console.log(bar)
+
+    if (bars.name && bars.name.length > 0) {
       axios
-        .post('/api/sessions', task)
+        .post('/api/sessions', bars)
         .then((res) => {
           if (res.data) {
-            console.log('success')
+            console.log(res.data)
           }
         })
         .catch((err) => console.log(err))
@@ -84,7 +86,7 @@ function ListBars({ bars }) {
                     onClick={handleExpandClick}
                     aria-expanded={expanded}
                     aria-label='show more'
-                  >
+                 >
                     <ExpandMoreIcon />
                   </ExpandMore>
                 </CardActions>
