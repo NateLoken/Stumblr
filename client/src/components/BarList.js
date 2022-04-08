@@ -88,7 +88,7 @@ function ListBars({ bars }) {
               </Card>
             </li>
           )
-        })
+       })
       ) : (
         <li>No bars in area </li>
       )}
