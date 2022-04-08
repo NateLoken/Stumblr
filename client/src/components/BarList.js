@@ -35,19 +35,22 @@ function ListBars({ bars }) {
 
   console.log(bars)
   function addBar(name, location) {
-    const bar = {
-      name: name,
-      location: location
+    const session = {
+      id: "625069fd8af94affa99fe356",
+      bars: {
+        name: name,
+        location: location
+      }
     }
 
-    console.log(bar)
+    console.log(bars)
 
-    if (bars.name && bars.name.length > 0) {
+    if (session.id && session.id.length > 0) {
       axios
-        .post('/api/sessions', bars)
+        .post('/api/sessions/bars', session)
         .then((res) => {
           if (res.data) {
-            console.log(res.data)
+            console.log("success")
           }
         })
         .catch((err) => console.log(err))
