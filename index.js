@@ -93,7 +93,7 @@ app.get("/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "http://localhost:3000" }),
   function(req, res) {
     // Successful authentication, redirect secrets.
-    res.redirect("http://localhost:3000");
+    res.redirect("http://localhost:3000/");
 });
 
 app.get("/logout", (req, res) => {
