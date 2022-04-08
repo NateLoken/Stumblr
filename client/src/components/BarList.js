@@ -102,7 +102,7 @@ function ListBars({ bars }) {
                 </Collapse>
               </Card>
            </li>
-          )
+         )
         })
       ) : (
         <li>No bars in area</li>
