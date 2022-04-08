@@ -96,10 +96,8 @@ app.get("/auth/google/callback",
     res.redirect("http://localhost:3000/");
 });
 
-app.get("/logout", (req, res) => {
-  req.flash("success", "Successfully logged out");
-  req.session.destroy(function () {
-    res.clearCookie("connect.sid");
-    res.redirect("/");
-  });
+app.get('/logout', (req, res) => {
+  req.logout();
+  req.session = null;
+  res.redirect('/');
 });

@@ -4,7 +4,6 @@ import Session from "./components/Session";
 import FindBars from "./components/FindBars";
 import Navbar from "./components/Navbar";
 import Authentication from "./components/Authentication";
-import Logout from "./components/Logout"
 import "./App.css";
 export const UserContext = React.createContext({
   isLoggedIn: false,
