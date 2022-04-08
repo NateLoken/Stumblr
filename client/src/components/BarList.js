@@ -26,7 +26,7 @@ function ListBars({ bars }) {
   console.log(bars)
   function addBar(name, location) {
     const session = {
-      id: '625069fd8af94affa99fe356',
+     id: "62509d7a53c7195026dd2f8c",
       bars: {
         name: name,
         location: location,

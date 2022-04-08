@@ -4,11 +4,10 @@ import React from 'react'
 function ListBars({ session, deleteSession }) {
   return session.map((session) => {
     return (
-      <ul key={session._id} onClick={() => deleteSession(session._id)}>
-        {session.bars.map((bars) => {
-          console.log(bars.name)
-          ;<li key={bars._id}>{bars.name}</li>
-        })}
+      <ul key={session._id}>
+        {session.bars.map((bars) => (
+          <li key={bars._id} onClick={() => deleteSession(bars._id)}>{bars.name}</li>
+        ))}
       </ul>
     )
   })
