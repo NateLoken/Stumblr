@@ -1,16 +1,20 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 // Create schema for session
 const SessionSchema = new Schema({
-  action: {
-    type: String,
-    required: [true, 'The session text field is required'],
-  },
-});
+  bars: [
+    {
+      name: String,
+      location: {
+        lat: Number,
+        lng: Number,
+      },
+    },
+  ],
+})
 
 // Create model for session
-const Session = mongoose.model('sessions', SessionSchema);
+const Session = mongoose.model('sessions', SessionSchema)
 
-module.exports = Session;
-
+module.exports = Session

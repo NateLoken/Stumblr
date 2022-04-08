@@ -24,6 +24,25 @@ const StyledRating = styled(Rating)({
 
 function ListBars({ bars }) {
   console.log(bars)
+  function addBar(name, location) {
+    const bar = {
+      name: name,
+      location: location,
+    }
+
+    console.log(bar)
+
+    if (bars.name && bars.name.length > 0) {
+      axios
+        .post('/api/sessions', bars)
+        .then((res) => {
+          if (res.data) {
+            console.log(res.data)
+          }
+        })
+        .catch((err) => console.log(err))
+    }
+  }
 
   return (
     <ul>
@@ -64,7 +83,7 @@ function ListBars({ bars }) {
                   </Typography>
                 </CardContent>
               </Card>
-           </li>
+            </li>
           )
         })
       ) : (

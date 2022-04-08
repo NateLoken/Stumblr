@@ -6,13 +6,16 @@ const User = require('../models/user')
 
 router.get('/sessions', (req, res, next) => {
   // This will return all the data, exposing only the id and action field to the client
-  Session.find({}, 'action')
-    .then((data) => res.json(data))
+  Session.find({}, 'bars')
+    .then((data) => {
+      res.json(data)
+      console.log(res.json(data))
+    })
     .catch(next);
 });
 
 router.post('/sessions', (req, res, next) => {
-  if (req.body.action) {
+  if (req.body) {
     Session.create(req.body)
       .then((data) => res.json(data))
       .catch(next);

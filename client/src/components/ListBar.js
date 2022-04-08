@@ -1,5 +1,5 @@
 // Displays bars in list format for a session
-import React from 'react';
+import React from 'react'
 
 const ListBars = ({ session, deleteSession }) => {
   return (
@@ -7,17 +7,17 @@ const ListBars = ({ session, deleteSession }) => {
       {session && session.length > 0 ? (
         session.map((session) => {
           return (
+            //console.log(session.bars[0].name)
             <li key={session._id} onClick={() => deleteSession(session._id)}>
-              {session.action}
+              {session.bars[0].name}
             </li>
-          );
+          )
         })
       ) : (
         <li>No bars in session</li>
       )}
     </ul>
-  );
-};
+  )
+}
 
-export default ListBars;
-
+export default ListBars
