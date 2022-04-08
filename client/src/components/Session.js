@@ -42,7 +42,6 @@ class Session extends Component {
     return (
       <div>
         <h1>Session</h1>
-        <Input getBars={this.getBars} />
         <ListBar session={bars} deleteSession={this.deleteBar} />
       </div>
     );
