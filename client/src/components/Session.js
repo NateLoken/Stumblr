@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Input from './Input';
+// import Input from './Input';
 import ListBar from './ListBar';
 
 class Session extends Component {
@@ -25,16 +25,27 @@ class Session extends Component {
       .catch((err) => console.log(err));
   };
 
+  // deleteSession = (id) => {
+  //   axios
+  //     .delete(`/api/sessions/${id}`)
+  //     .then((res) => {
+  //       if (res.data) {
+  //         this.getBars();
+  //       }
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+  //
   deleteBar = (id) => {
-    axios
-      .delete(`/api/sessions/${id}`)
-      .then((res) => {
-        if (res.data) {
-          this.getBars();
-        }
-      })
-      .catch((err) => console.log(err));
-  };
+      axios
+        .post(`/api/sessions/bars/${id}`)
+        .then((res) => {
+          if (res.data) {
+            this.getBars();
+          }
+        })
+        .catch((err) => console.log(err));
+    };
 
   render() {
     let { bars } = this.state;
@@ -42,7 +53,7 @@ class Session extends Component {
     return (
       <div>
         <h1>Session</h1>
-        <ListBar session={bars} deleteSession={this.deleteBar} />
+        <ListBar session={bars} deleteBar={this.deleteBar} />
       </div>
     );
   }
