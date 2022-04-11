@@ -3,8 +3,6 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const routes = require('./routes/api');
-
-const session = require("express-session");
 require('dotenv').config()
 const request = require('react-request');
 
@@ -12,14 +10,6 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 // Connect to the database
-
-app.use(session({
-  secret: "qawsedrftg",
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
 
 mongoose
   .connect(process.env.DB, { useNewUrlParser: true })
@@ -46,4 +36,5 @@ app.use((err, req, res, next) => {
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+
 });

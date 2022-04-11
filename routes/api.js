@@ -4,9 +4,17 @@ const Session = require('../models/sessions');
 const passport = require('passport');
 const User = require('../models/user')
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const findOrCreate = require("mongoose-findorcreate");
+const session = require("express-session");
 require('dotenv').config();
 const app = express();
+
+app.use(session({
+  secret: "qawsedrftg",
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.use(User.createStrategy());
 passport.serializeUser(function(user, done) {
