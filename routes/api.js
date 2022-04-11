@@ -44,4 +44,10 @@ router.delete('/sessions/:id', (req, res, next) => {
     .catch(next)
 })
 
+router.post('/sessions/bars/:id', (req, res, next) => {
+  Session.updateOne({}, { $pull: { bars: { _id: req.params.id } } })
+    .then((data) => res.json(data))
+    .catch(next)
+})
+
 module.exports = router
