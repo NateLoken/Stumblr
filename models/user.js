@@ -1,19 +1,11 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const passportLocalMongoose = require("passport-local-mongoose");
-const findOrCreate = require("mongoose-findorcreate");
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-const userSchema = new mongoose.Schema ({
-    name: String,
-    email: String,
-    googleId: String,
-    gender: String,
-  });
+const userSchema = new mongoose.Schema({
+  googleId: String,
+  username: String,
+})
 
-  userSchema.plugin(passportLocalMongoose);
-  userSchema.plugin(findOrCreate);
+const User = new mongoose.model('User', userSchema)
 
-const User = new mongoose.model("User", userSchema);
-
-
-module.exports = User;
+module.exports = User
