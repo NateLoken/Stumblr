@@ -14,6 +14,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 // import { bgcolor } from '@mui/system';
 import logo from "../assets/images/icon.png"
+import { Avatar } from '@mui/material';
 
 const pages = ['Find Bars', 'Sessions', 'Login with Google'];
 const settings = ['Profile', 'Badges', 'Settings'];
@@ -108,7 +109,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Profile">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Profile" src="./client/public/user.png"/>
               </IconButton>
             </Tooltip>
             <Menu
