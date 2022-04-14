@@ -13,7 +13,7 @@ import { makeStyles } from '@mui/material';
 export default function SimpleBottomNavigation() {
   return (
     <Box sx={{ width: 500 }}>
-      <Paper sx={{ width: '100%', position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor:"#00000" }} elevation={3}>
+      <Paper sx={{ width: '100%', position: 'fixed', bottom: 3, left:0, right:0, zIndex:99}} elevation={15}>
       <BottomNavigation
         showLabels
       >
