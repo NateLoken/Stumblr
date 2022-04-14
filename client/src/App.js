@@ -12,9 +12,9 @@ const App = () => {
         <div className="App">
           <Navbar />
           <Routes>
-            <Route path="/find%20bars" exact element={<FindBars />} />
+            <Route path="/find_bars" exact element={<FindBars />} />
             <Route path="/sessions" element={<Session />} />
-            <Route path="/Login%20with%20Google" element={<GoogleLoginComponent />} />
+            <Route path="/login" element={<GoogleLoginComponent />} />
           </Routes>
         </div>
       </Router>
