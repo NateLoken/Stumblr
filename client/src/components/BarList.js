@@ -70,7 +70,8 @@ function ListBars({ bars }) {
                           name="customized-color"
                           defaultValue={bars.price_level} readOnly
                           size="small"
-                          precision={0.5}
+                          precision={.5}
+                          max={4}
                           icon={<AttachMoneyOutlinedIcon fontSize="inherit" />}
                           emptyIcon={<AttachMoneyOutlinedIcon fontSize="inherit" />}/>
                 </Typography>
