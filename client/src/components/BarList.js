@@ -1,3 +1,4 @@
+import axios from 'axios'
 import * as React from 'react'
 import { styled } from '@mui/material/styles'
 import Card from '@mui/material/Card'
@@ -10,8 +11,7 @@ import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import Rating from '@mui/material/Rating'
-
-const Spacer = require('react-spacer')
+import { Button } from '@mui/material'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props
@@ -31,26 +31,22 @@ function ListBars({ bars }) {
     setExpanded(!expanded)
   }
 
-  const [value, setValue] = React.useState(2)
 
-  console.log(bars)
   function addBar(name, location) {
     const session = {
-      id: "62509d7a53c7195026dd2f8c",
+      id: '62509d7a53c7195026dd2f8c',
       bars: {
         name: name,
-        location: location
-      }
+        location: location,
+      },
     }
-
-    console.log(bars)
 
     if (session.id && session.id.length > 0) {
       axios
         .post('/api/sessions/bars', session)
         .then((res) => {
           if (res.data) {
-            console.log("success")
+            console.log('success')
           }
         })
         .catch((err) => console.log(err))
@@ -64,7 +60,19 @@ function ListBars({ bars }) {
           return (
             <li key={bars.place_id}>
               <Card>
-                <CardHeader title={bars.name} />
+                <CardHeader
+                  title={bars.name}
+                  action={
+                    <Button
+                      variant='outlined'
+                      onClick={() => {
+                        addBar(bars.name, bars.geometry.location)
+                      }}
+                    >
+                      Add
+                    </Button>
+                  }
+                />
                 <Divider />
                 <CardContent>
                   <Typography variant='body2' color='text.secondary'>
@@ -89,20 +97,20 @@ function ListBars({ bars }) {
                     onClick={handleExpandClick}
                     aria-expanded={expanded}
                     aria-label='show more'
-                 >
+                  >
                     <ExpandMoreIcon />
                   </ExpandMore>
                 </CardActions>
                 <Collapse in={expanded} timeout='auto' unmountOnExit>
                   <CardContent>
                     <Typography variant='body2' color='text.secondary'>
-                      Additional Info can be put here
+                      Additional info can be put here
                     </Typography>
                   </CardContent>
                 </Collapse>
               </Card>
-           </li>
-         )
+            </li>
+          )
         })
       ) : (
         <li>No bars in area</li>
