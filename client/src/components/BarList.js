@@ -10,6 +10,13 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Rating from '@mui/material/Rating';
+import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
+
+const StyledRating = styled(Rating)({
+  '& .MuiRating-iconFilled': {
+    color: 'green',
+  },
+});
 
 const Spacer = require('react-spacer')
 
@@ -24,6 +31,8 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
+
+
 function ListBars({ bars }) {
   const [expanded, setExpanded] = React.useState(false);
 
@@ -34,12 +43,19 @@ function ListBars({ bars }) {
   const [value, setValue] = React.useState(2);
 
   console.log(bars)
-
+/* Price Levels
+0 Free
+1 Inexpensive
+2 Moderate
+3 Expensive
+4 Very Expensive */
   return (
     <ul>
       {bars && bars.length > 0 ? (
         bars.map((bars) => {
           return <li key={bars.place_id}>
+
+
             <Card>
               <CardHeader title={bars.name} />
               <Divider />
@@ -48,28 +64,17 @@ function ListBars({ bars }) {
                     Rating: {bars.rating} ({bars.user_ratings_total})
                     <br />
                     <Rating text-align='right' name="read-only" size="small" precision={0.5} value={bars.rating} readOnly />
-                    <br />Price level: {bars.price_level} 
-                    <br />
-                    
+                    <br />Price level:
+                    <br/>
+                        <StyledRating
+                          name="customized-color"
+                          defaultValue={bars.price_level} readOnly
+                          size="small"
+                          precision={0.5}
+                          icon={<AttachMoneyOutlinedIcon fontSize="inherit" />}
+                          emptyIcon={<AttachMoneyOutlinedIcon fontSize="inherit" />}/>
                 </Typography>
               </CardContent>
-              <CardActions disableSpacing>
-                <ExpandMore
-                  expand={expanded}
-                  onClick={handleExpandClick}
-                  aria-expanded={expanded}
-                  aria-label="show more"
-                >
-                  <ExpandMoreIcon />
-                </ExpandMore>
-              </CardActions>
-              <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <Typography variant="body2" color="text.secondary">
-                    Additional Info can be put here
-                  </Typography>
-                </CardContent>
-              </Collapse>
             </Card>
           </li>;
         })
