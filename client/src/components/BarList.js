@@ -75,23 +75,6 @@ function ListBars({ bars }) {
                           emptyIcon={<AttachMoneyOutlinedIcon fontSize="inherit" />}/>
                 </Typography>
               </CardContent>
-              <CardActions disableSpacing>
-                <ExpandMore
-                  expand={expanded}
-                  onClick={handleExpandClick}
-                  aria-expanded={expanded}
-                  aria-label="show more"
-                >
-                  <ExpandMoreIcon />
-                </ExpandMore>
-              </CardActions>
-              <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <Typography variant="body2" color="text.secondary">
-                    Additional Info can be put here
-                  </Typography>
-                </CardContent>
-              </Collapse>
             </Card>
           </li>;
         })
