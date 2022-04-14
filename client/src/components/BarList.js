@@ -1,3 +1,4 @@
+import axios from 'axios'
 import * as React from 'react'
 import { styled } from '@mui/material/styles'
 import Card from '@mui/material/Card'
@@ -26,14 +27,12 @@ function ListBars({ bars }) {
   console.log(bars)
   function addBar(name, location) {
     const session = {
-     id: "62509d7a53c7195026dd2f8c",
+     id: '62509d7a53c7195026dd2f8c',
       bars: {
         name: name,
         location: location,
       },
     }
-
-    console.log(bars)
 
     if (session.id && session.id.length > 0) {
       axios
@@ -54,7 +53,19 @@ function ListBars({ bars }) {
           return (
             <li key={bars.place_id}>
               <Card>
-                <CardHeader title={bars.name} />
+                <CardHeader
+                  title={bars.name}
+                  action={
+                    <Button
+                      variant='outlined'
+                      onClick={() => {
+                        addBar(bars.name, bars.geometry.location)
+                      }}
+                    >
+                      Add
+                    </Button>
+                  }
+                />
                 <Divider />
                 <CardContent>
                   <Typography variant='body1' color='text.secondary'>
