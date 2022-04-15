@@ -16,7 +16,7 @@ export default function SimpleBottomNavigation() {
   if (user.isLoggedIn){
     return (
       <Box sx={{ width: 500 }}>
-        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+        <Paper sx={{ width: '100%', position: 'fixed', bottom: 3, left:0, right:0, zIndex:99}} elevation={15}>
         <BottomNavigation
           showLabels
           value={value}
@@ -35,7 +35,7 @@ export default function SimpleBottomNavigation() {
   if (!user.isLoggedIn){
     return (
       <Box sx={{ width: 500 }}>
-        <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
+         <Paper sx={{ width: '100%', position: 'fixed', bottom: 3, left:0, right:0, zIndex:99}} elevation={15}>
         <BottomNavigation
           showLabels
           value={value}
