@@ -4,6 +4,7 @@ import './index.css'
 import App from './App'
 import Context from './Context'
 import reportWebVitals from './reportWebVitals'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,5 +14,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 )
-
+// Register allows app to work offline
+serviceWorkerRegistration.register();
 reportWebVitals()
