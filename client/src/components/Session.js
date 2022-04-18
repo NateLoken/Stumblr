@@ -1,63 +1,50 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-// import Input from './Input';
-import ListBar from './ListBar';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import ListBar from './ListBar'
 
-class Session extends Component {
-  state = {
-    bars: [],
-  };
+function Session() {
+  const [session, setSession] = useState([])
 
-  componentDidMount() {
-    this.getBars();
+  useEffect(() => {
+    getBars()
+  })
+
+  function getBars() {
+    axios.get('api/sessions').then((res) => {
+      if (res.data) {
+        setSession(res.data)
+      }
+    })
   }
 
-  getBars = () => {
-    axios
-      .get('/api/sessions')
-      .then((res) => {
-        if (res.data) {
-          this.setState({
-            bars: res.data,
-          });
-        }
-      })
-      .catch((err) => console.log(err));
-  };
-
-  // deleteSession = (id) => {
+  // function deleteSession(id) {
   //   axios
-  //     .delete(`/api/sessions/${id}`)
+  //     .post(`/api/sessions/${id}`)
   //     .then((res) => {
-  //       if (res.data) {
-  //         this.getBars();
+  //       if(res.data) {
+  //         getBars()
   //       }
   //     })
-  //     .catch((err) => console.log(err));
-  // };
-  //
-  deleteBar = (id) => {
-      axios
-        .post(`/api/sessions/bars/${id}`)
-        .then((res) => {
-          if (res.data) {
-            this.getBars();
-          }
-        })
-        .catch((err) => console.log(err));
-    };
+  //     .catch((err) => console.log(err))
+  // }
 
-  render() {
-    let { bars } = this.state;
-
-    return (
-      <div>
-        <h1>Session</h1>
-        <ListBar session={bars} deleteBar={this.deleteBar} />
-      </div>
-    );
+  function deleteBar(id) {
+    axios
+      .post(`/api/sessions/bars/${id}`)
+      .then((res) => {
+        if (res.data) {
+          getBars()
+        }
+      })
+      .catch((err) => console.log(err))
   }
+
+  return (
+    <div>
+      <h1>Session</h1>
+      <ListBar session={session} deleteBar={deleteBar} />
+    </div>
+  )
 }
 
-export default Session;
-
+export default Session

@@ -25,10 +25,9 @@ const StyledRating = styled(Rating)({
 })
 
 function ListBars({ bars }) {
-  console.log(bars)
   function addBar(name, location) {
     const session = {
-     id: '62509d7a53c7195026dd2f8c',
+      id: '62509d7a53c7195026dd2f8c',
       bars: {
         name: name,
         location: location,
@@ -100,7 +99,7 @@ function ListBars({ bars }) {
               </Card>
             </li>
           )
-       })
+        })
       ) : (
         <li>No bars in area </li>
       )}

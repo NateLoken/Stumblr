@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import { CircularProgress } from '@mui/material'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -52,13 +53,8 @@ const options = {
 }
 
 const mapStyles = {
-  height: '100vh',
+  height: '85vh',
   width: '100%',
-}
-
-const mapBeGone = {
-  height: '0vh',
-  width: '0%',
 }
 
 const libraries = ['places']
@@ -129,8 +125,7 @@ function Map() {
   }, [])
 
   if (loadError) return <div>Map cannot be loaded right now, sorry</div>
-  if (!isLoaded) return <div>Loading...</div>
-
+  if (!isLoaded) return <CircularProgress />
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -184,11 +179,6 @@ function Map() {
         </GoogleMap>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <GoogleMap
-          options={options}
-          mapContainerStyle={mapBeGone}
-          onLoad={onLoad}
-        ></GoogleMap>
         <ListBars bars={bars} />
       </TabPanel>
     </Box>
