@@ -7,10 +7,18 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Rating from '@mui/material/Rating';
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
+import SportsBarOutlinedIcon from '@mui/icons-material/SportsBarOutlined';
+import SportsBarIcon from '@mui/icons-material/SportsBar';
+
+const StyledPricing = styled(Rating)({
+  '& .MuiRating-iconFilled': {
+    color: 'green',
+  },
+});
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
-    color: 'green',
+    color: '#f28e46',
   },
 });
 
@@ -27,11 +35,19 @@ function ListBars({ bars }) {
               <CardContent>
                 <Typography variant="body1" color="text.secondary">
                     Rating: {bars.rating} ({bars.user_ratings_total})
-                    <br />
-                    <Rating text-align='right' name="read-only" size="small" precision={0.5} value={bars.rating} readOnly />
+                    <br/>
+                    <StyledRating
+                    
+                          name="customized-color"
+                          defaultValue={bars.rating} readOnly
+                          size="small"
+                          precision={.5}
+                          max={5}
+                          icon={<SportsBarIcon fontSize="inherit" />}
+                          emptyIcon={<SportsBarOutlinedIcon fontSize="inherit" />}/>
                     <br />Price level:
                     <br/>
-                        <StyledRating
+                        <StyledPricing
                           name="customized-color"
                           defaultValue={bars.price_level} readOnly
                           size="small"

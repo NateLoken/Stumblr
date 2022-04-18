@@ -34,7 +34,10 @@ const GoogleLoginComponent = (props)=> {
           <div className="col-md-12">
             {user.isLoggedIn ? (
               <div>
-                <h1>Welcome, {user.name}</h1>
+                <h1>Welcome to Stumblr</h1>
+                  <h2>{user.userName}</h2> 
+                  
+
                 <GoogleLogout
                   clientId={CLIENT_ID}
                   buttonText={"Logout"}
