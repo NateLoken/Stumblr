@@ -2,7 +2,7 @@ import { borders } from '@mui/system'
 import React from 'react'
 import GoogleButton from 'react-google-button'
 
-function auth() {
+function GoogleAuth() {
   const googleLogin = () => {
     window.open('http://localhost:5000/auth/google', '_self')
   }
@@ -20,4 +20,4 @@ function auth() {
     </div>
   )
 }
-export default auth
+export default GoogleAuth

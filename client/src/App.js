@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Session from "./components/Session";
 import FindBars from "./components/FindBars";
 import Navbar from "./components/Navbar";
-import Authentication from "./components/Authentication";
+import GoogleAuth from "./components/Authentication";
 import { myContext } from './Context'
 import "./App.css";
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
           <Routes>
             <Route path="/find_bars" exact element={<FindBars />} />
             <Route path="/sessions" element={<Session />} />
-            <Route path="/login" element={<GoogleLoginComponent />} />
+            <Route path="/login" element={<GoogleAuth />} />
          </Routes>
        </div>
      </Router>
