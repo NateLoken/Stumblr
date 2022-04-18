@@ -8,19 +8,22 @@ import "./App.css";
 export const UserContext = React.createContext({
   isLoggedIn: false,
   setLoggedIn: ()=>{},
-  userName: "",
-  setUserName: ()=>{},
+  name: "",
+  setName: ()=>{},
   email: "",
-  setEmail: ()=>{}
+  setEmail: ()=>{},
+  userId: "",
+  setUserId: ()=>{}
 });
 const App = () => {
   const [isLoggedIn, setLoggedIn] = React.useState(false);
-  const [userName, setUserName] = React.useState("");
+  const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
+  const [userId, setUserId] = React.useState("");
   return (
       <Router>
         <div className="App">
-          <UserContext.Provider value={{isLoggedIn, setLoggedIn, userName, setUserName, email, setEmail}}>
+          <UserContext.Provider value={{isLoggedIn, setLoggedIn, name, setName, email, setEmail, userId, setUserId}}>
             <Navbar />
             <Routes>
               <Route path="/find_bars" exact element={<FindBars />} />

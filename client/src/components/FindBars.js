@@ -45,14 +45,6 @@ function a11yProps(index) {
   };
 }
 
-
-
-
-
-
-
-
-
 const options = {
   disableDefaultUI: true,
   zoom: 13,

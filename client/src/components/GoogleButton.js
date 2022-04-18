@@ -6,11 +6,13 @@ const CLIENT_ID =
 
 const GoogleLoginComponent = (props)=> {
     const user = React.useContext(UserContext);
-    console.log("the value of user context object inside GButton is ", user);
+    //console.log("the value of user context object inside GButton is ", user);
     const responseGoogleSuccess = (response) => {
+      console.log(response)
         user.setLoggedIn(true);
-        user.setUserName(response.profileObj.name);
+        user.setName(response.profileObj.name);
         user.setEmail(response.profileObj.email);
+        user.setUserId(response.profileObj.googleId);
       };
     
       // Error Handler
@@ -22,7 +24,8 @@ const GoogleLoginComponent = (props)=> {
       const logout = (response) => {
         console.log(response);
         user.setLoggedIn(false);
-        user.setUserName("");
+        user.setUserId("");
+        user.setName("");
         user.setEmail("");
       };
 
@@ -31,7 +34,7 @@ const GoogleLoginComponent = (props)=> {
           <div className="col-md-12">
             {user.isLoggedIn ? (
               <div>
-                <h1>Welcome, {user.username}</h1>
+                <h1>Welcome, {user.name}</h1>
                 <GoogleLogout
                   clientId={CLIENT_ID}
                   buttonText={"Logout"}

@@ -12,7 +12,7 @@ import { UserContext } from '../App';
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
   const user = React.useContext(UserContext);
-  console.log("the value of user context object inside Navbar is ", user);
+  //console.log("the value of user context object inside Navbar is ", user);
   if (user.isLoggedIn){
     return (
       <Box sx={{ width: 500 }}>
