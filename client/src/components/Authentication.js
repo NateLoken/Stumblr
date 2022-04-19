@@ -8,7 +8,7 @@ function GoogleAuth() {
   }
   return (
     <div
-      style={{ view: 'flex', justifyContent: 'center', alignItems: 'center',  border: 'solid' }}
+      style={{ view: 'flex', justifyContent: 'center', alignItems: 'center' }}
     >
       <h3>Login</h3>
       <GoogleButton
