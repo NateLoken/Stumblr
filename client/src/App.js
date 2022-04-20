@@ -5,6 +5,7 @@ import FindBars from "./components/FindBars";
 import Navbar from "./components/Navbar";
 import GoogleLoginComponent from "./components/GoogleButton";
 import "./App.css";
+import Auth from "./components/Authentication"; 
 
 const App = () => {
   return (
@@ -14,7 +15,7 @@ const App = () => {
           <Routes>
             <Route path="/find_bars" exact element={<FindBars />} />
             <Route path="/sessions" element={<Session />} />
-            <Route path="/login" element={<GoogleLoginComponent />} />
+            <Route path="/login" element={<Auth />} />
           </Routes>
         </div>
       </Router>
