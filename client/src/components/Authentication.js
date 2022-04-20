@@ -1,6 +1,9 @@
 import { borders } from '@mui/system'
 import React from 'react'
-import GoogleButton from 'react-google-button'
+import Button from '@mui/material/Button';
+import "../App.css";
+import GoogleIcon from '@mui/icons-material/Google';
+
 
 function GoogleAuth() {
   const googleLogin = () => {
@@ -8,15 +11,10 @@ function GoogleAuth() {
   }
   return (
     <div
-      style={{ view: 'flex', justifyContent: 'center', alignItems: 'center' }}
-    >
+      style={{ view: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <h3>Login</h3>
-      <GoogleButton
-        type='light' // can be light or dark
-        onClick={() => {
-          googleLogin()
-        }}
-      />
+        {/* <button type="submit" className="google-button"> </button> */}
+          <Button variant="outlined" onClick={() => googleLogin()} startIcon={<GoogleIcon />}>Login with Google</Button>
     </div>
   )
 }
