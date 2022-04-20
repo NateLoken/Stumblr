@@ -7,7 +7,6 @@ import LiquorOutlinedIcon from '@mui/icons-material/LiquorOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { Link } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
-import { makeStyles } from '@mui/material';
 
 
 export default function SimpleBottomNavigation() {
