@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react'
 import ListBars from './BarList'
 import {
+  HStack,
+  IconButton,
+  Input,
+  Text,
+} from '@chakra-ui/react'
+import {
+  Autocomplete,
   GoogleMap,
   InfoWindow,
   Marker,
   useJsApiLoader,
+  DirectionsRenderer,
 } from '@react-google-maps/api'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
@@ -71,9 +79,10 @@ function Map() {
   const [searchName, setSearchName] = React.useState("");
   const [ratingRange, setRatingRange] = React.useState([1,5]);
   const [priceRange, setPriceRange] = React.useState([0, 4]);
+
   useEffect(() => {
     setSessionId(window.localStorage.getItem('session_id'))
-  },[])
+  }, [])
 
   function addBar(session_id, name, location) {
     const session = {
@@ -89,7 +98,7 @@ function Map() {
         .post('/api/sessions/bars', session)
         .then((res) => {
           if (res.data) {
-            <Alert onClick={() => {}}>{name} has been added to session</Alert>
+            ;<Alert onClick={() => {}}>{name} has been added to session</Alert>
           }
         })
         .catch((err) => console.log(err))
@@ -100,6 +109,43 @@ function Map() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   })
+  const [userLocation, setUserLocation] = React.useState(
+    /** @type google.maps.Map */ (null)
+  )
+
+  /** @type React.MutableRefObject<HTMLInputElement> */
+  const originRef = React.useRef()
+  /** @type React.MutableRefObject<HTMLInputElement> */
+  // const destinationRef = React.useRef()
+
+  const handleDestinationChange = (e) => {
+    setDestination(e.target.value)
+  }
+
+  async function calculateRoute() {
+    if (destination === '') {
+      console.log('test')
+      return
+    }
+    // eslint-disable-next-line no-undef
+    const directionsService = new google.maps.DirectionsService()
+    const results = await directionsService.route({
+      origin: userLocation,
+      destination: destination,
+      // eslint-disable-next-line no-undef
+      travelMode: google.maps.TravelMode.DRIVING,
+    })
+    setDirectionsResponse(results)
+    setDistance(results.routes[0].legs[0].distance.text)
+    setDuration(results.routes[0].legs[0].duration.text)
+  }
+
+  function clearRoute() {
+    setDirectionsResponse(null)
+    setDistance('')
+    setDuration('')
+    setDestination('')
+  }
 
   // To control the tabs
   const [value, setValue] = React.useState(0)
@@ -109,6 +155,7 @@ function Map() {
 
   const mapRef = React.useRef()
   const onLoad = React.useCallback((map) => {
+    setMap(map)
     mapRef.current = map
 
     navigator.geolocation.getCurrentPosition((position) => {
@@ -116,6 +163,9 @@ function Map() {
         position.coords.latitude,
         position.coords.longitude
       )
+
+      setUserLocation(localArea)
+      originRef.current = localArea
 
       mapRef.current.setCenter(localArea)
       const request = {
