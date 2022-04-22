@@ -5,7 +5,10 @@ import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
 import LiquorOutlinedIcon from '@mui/icons-material/LiquorOutlined'
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import PersonIcon from '@mui/icons-material/Person';
+import Fab from '@mui/material/Fab';
 import { Link } from 'react-router-dom'
 import Paper from '@mui/material/Paper'
 import { myContext } from '../Context'
@@ -63,7 +66,7 @@ export default function SimpleBottomNavigation() {
               Button
               label='Log out'
               onClick={logout}
-              icon={<AccountCircleOutlinedIcon />}
+              icon={<LogoutOutlinedIcon />}
             />
           ) : (
             <BottomNavigationAction
@@ -71,10 +74,23 @@ export default function SimpleBottomNavigation() {
               component={Link}
               to='/login'
               label='Log in'
-              icon={<AccountCircleOutlinedIcon />}
+              icon={<LoginOutlinedIcon />}
             />
-          )}
+          )
+          }
         </BottomNavigation>
+        <div>
+        <Fab sx={{
+          margin: 0,
+          position: 'fixed',
+          top: 'auto',
+          bottom: 25,
+          left: 'auto',
+          right: 15,
+        }}size="medium" color="primary" aria-label="profile" 
+        component={Link} to='/profile'label='Log in'>
+              <PersonIcon fontSize='medium' />
+            </Fab></div>
       </Paper>
     </Box>
   )
