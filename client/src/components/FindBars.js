@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import { CircularProgress } from '@mui/material'
+import { Card, Button, CardContent, CardHeader, CircularProgress, Divider, CardActions } from '@mui/material'
 
 const libraries = ['places']
 
@@ -170,16 +170,18 @@ function Map() {
               }}
             >
               <div>
-                <h2>{selected.name}</h2>
-                <h2>{selected.rating}</h2>
-                <h2>{selected.price_level}</h2>
-                <button
-                  onClick={() => {
-                    addBar(session_id, selected.name, selected.location)
-                  }}
-                >
-                  Add
-                </button>
+                <Card>
+                  <CardHeader title={selected.name}  />
+                  <Divider />
+                  <CardContent>
+                    Rating: {selected.rating}
+                    <br />
+                    Price Level: {selected.price_level}
+                  </CardContent>
+                  <CardActions>
+                    <Button variant='outlined' onClick={() => addBar(session_id, selected.name, selected.geometry.location)}>Add</Button>
+                  </CardActions>
+                </Card>
               </div>
             </InfoWindow>
           ) : null}

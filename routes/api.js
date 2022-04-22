@@ -34,14 +34,12 @@ router.get('/sessions/bars/:user', (req, res, next) => {
 })
 
 router.post('/sessions/bars', (req, res, next) => {
-  console.log(req.body)
   if (req.body) {
     Session.updateOne(
       { _id: req.body.id },
       { $push: { bars: [req.body.bars] } }
     )
       .then((data) => {
-        console.log(data)
         res.json(data)
       })
 
@@ -64,7 +62,6 @@ router.post('/sessions/bars/:bar_id', (req, res, next) => {
     { "bars._id": req.params.bar_id},
     { $pull: { bars: { _id: req.params.bar_id } } })
     .then((data) => {
-      console.log(data)
       res.json(data)
     })
     .catch(next)
