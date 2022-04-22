@@ -3,6 +3,10 @@ const Schema = mongoose.Schema
 
 // Create schema for session
 const SessionSchema = new Schema({
+  owner: {
+    type: String,
+    required: true
+  },
   bars: [
     {
       name: String,

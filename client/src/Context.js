@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
-export const myContext = createContext({})
+export const userContext = createContext({})
 
 function Context(props) {
 
@@ -19,7 +19,7 @@ function Context(props) {
   }, [])
 
   return (
-    <myContext.Provider value={userObject}>{props.children}</myContext.Provider>
+    <userContext.Provider value={userObject}>{props.children}</userContext.Provider>
   )
 }
 

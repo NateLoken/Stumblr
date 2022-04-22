@@ -10,7 +10,8 @@ import Rating from '@mui/material/Rating'
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined'
 import SportsBarOutlinedIcon from '@mui/icons-material/SportsBarOutlined'
 import SportsBarIcon from '@mui/icons-material/SportsBar'
-import { Button } from '@mui/material'
+import { Button, IconButton } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
 
 const StyledPricing = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -24,10 +25,11 @@ const StyledRating = styled(Rating)({
   },
 })
 
-function ListBars({ bars }) {
-  function addBar(name, location) {
+function ListBars({ bars, session_id }) {
+
+  function addBar(session_id, name, location) {
     const session = {
-      id: '62509d7a53c7195026dd2f8c',
+      id: session_id,
       bars: {
         name: name,
         location: location,
@@ -56,14 +58,14 @@ function ListBars({ bars }) {
                 <CardHeader
                   title={bars.name}
                   action={
-                    <Button
-                      variant='outlined'
+                    <IconButton
+                      color='primary'
                       onClick={() => {
-                        addBar(bars.name, bars.geometry.location)
+                        addBar(session_id, bars.name, bars.geometry.location)
                       }}
                     >
-                      Add
-                    </Button>
+                      <AddIcon />
+                    </IconButton>
                   }
                 />
                 <Divider />

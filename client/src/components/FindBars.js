@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ListBars from './BarList'
 import {
   GoogleMap,
@@ -13,6 +13,8 @@ import Box from '@mui/material/Box'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { CircularProgress } from '@mui/material'
+
+const libraries = ['places']
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -53,16 +55,23 @@ const options = {
 }
 
 const mapStyles = {
-  height: '85vh',
+  height: '100vh',
   width: '100%',
 }
 
-const libraries = ['places']
-
 function Map() {
-  function addBar(name, location) {
+  const [selected, setSelected] = React.useState(null)
+  const [bars, setBars] = React.useState([])
+  const [session_id, setSessionId] = React.useState(null)
+
+  useEffect(() => {
+    // setSessionId('62623573b3f2b3065ca475ed')
+    setSessionId(window.localStorage.getItem('session_id'))
+  })
+
+  function addBar(session_id, name, location) {
     const session = {
-      id: '62509d7a53c7195026dd2f8c',
+      id: session_id,
       bars: {
         name: name,
         location: location,
@@ -85,8 +94,6 @@ function Map() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   })
-  const [selected, setSelected] = React.useState(null)
-  const [bars, setBars] = React.useState([])
 
   // To control the tabs
   const [value, setValue] = React.useState(0)
@@ -168,7 +175,7 @@ function Map() {
                 <h2>{selected.price_level}</h2>
                 <button
                   onClick={() => {
-                    addBar(selected.name, selected.location)
+                    addBar(session_id, selected.name, selected.location)
                   }}
                 >
                   Add
@@ -179,7 +186,7 @@ function Map() {
         </GoogleMap>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <ListBars bars={bars} />
+        <ListBars bars={bars} session_id={session_id} />
       </TabPanel>
     </Box>
   )
