@@ -49,7 +49,7 @@ export default function Homepage() {
       </div>
       <div>
         {userObject ? (
-          <Button variant='outlined'>Join Session</Button>
+          <Button variant='outlined' onClick={() => {navigate('/join_session')}}>Join Session</Button>
         ) : (
           <Button
             variant='outlined'

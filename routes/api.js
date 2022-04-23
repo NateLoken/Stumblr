@@ -7,8 +7,8 @@ router.get('/sessions/:user', (req, res, next) => {
   console.log(req.params.user)
   Session.find({ owner: req.params.user })
     .then((data) => {
-      console.log(data)
-      res.json(data._id)
+      console.log(data[0]._id)
+      res.json(data[0]._id)
     })
     .catch(next)
 })
@@ -25,8 +25,8 @@ router.post('/sessions', (req, res, next) => {
   }
 })
 
-router.get('/sessions/bars/:user', (req, res, next) => {
-  Session.find({ owner: req.params.user }, 'bars')
+router.get('/sessions/bars/:session_id', (req, res, next) => {
+  Session.find({ _id: req.params.session_id }, 'bars')
     .then((data) => {
       res.json(data)
     })
@@ -40,6 +40,7 @@ router.post('/sessions/bars', (req, res, next) => {
       { $push: { bars: [req.body.bars] } }
     )
       .then((data) => {
+        console.log(data)
         res.json(data)
       })
 

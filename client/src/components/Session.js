@@ -5,16 +5,16 @@ import { userContext } from '../Context'
 import { useSearchParams } from 'react-router-dom'
 
 function Session() {
-  const userObject = useContext(userContext)
   const [session, setSession] = useState([])
+  const [sessionId, setSessionId] = useState(null)
 
   useEffect(() => {
-    getBars()
+    setSessionId(window.localStorage.getItem('session_id'))
+    getBars(sessionId)
   })
 
-  function getBars() {
-    const user = userObject.username
-    axios.get(`/api/sessions/bars/${user}`).then((res) => {
+  function getBars(sessionId) {
+    axios.get(`/api/sessions/bars/${sessionId}`).then((res) => {
       if (res.data) {
         setSession(res.data)
       }

@@ -10,7 +10,7 @@ import Rating from '@mui/material/Rating'
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined'
 import SportsBarOutlinedIcon from '@mui/icons-material/SportsBarOutlined'
 import SportsBarIcon from '@mui/icons-material/SportsBar'
-import { Button, IconButton } from '@mui/material'
+import { Alert, AlertTitle, Button, CardActions, IconButton } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 
 const StyledPricing = styled(Rating)({
@@ -26,7 +26,6 @@ const StyledRating = styled(Rating)({
 })
 
 function ListBars({ bars, session_id }) {
-
   function addBar(session_id, name, location) {
     const session = {
       id: session_id,
@@ -40,8 +39,11 @@ function ListBars({ bars, session_id }) {
       axios
         .post('/api/sessions/bars', session)
         .then((res) => {
-          if (res.data) {
-            console.log('success')
+          if (res.status === 200) {
+            <Alert severity='success'>
+              <AlertTitle>Success</AlertTitle>
+              {name} has been added to session
+            </Alert>
           }
         })
         .catch((err) => console.log(err))

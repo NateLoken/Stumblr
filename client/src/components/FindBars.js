@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import PropTypes from 'prop-types'
 import axios from 'axios'
-import { Card, Button, CardContent, CardHeader, CircularProgress, Divider, CardActions } from '@mui/material'
+import { Card, Button, CardContent, CardHeader, CircularProgress, Divider, CardActions, Alert } from '@mui/material'
 
 const libraries = ['places']
 
@@ -83,7 +83,7 @@ function Map() {
         .post('/api/sessions/bars', session)
         .then((res) => {
           if (res.data) {
-            console.log('success')
+            <Alert onClick={() => {}}>{name} has been added to session</Alert>
           }
         })
         .catch((err) => console.log(err))

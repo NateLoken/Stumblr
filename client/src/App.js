@@ -5,6 +5,7 @@ import FindBars from './components/FindBars'
 import Navbar from './components/Navbar'
 import GoogleAuth from './components/Authentication'
 import Homepage from './components/Homepage'
+import Input from './components/Input'
 import { userContext } from './Context'
 import "./App.css";
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/' exact element={<Homepage />} />
           <Route path='/find_bars' element={<FindBars />} />
           <Route path='/sessions' element={<Session />} />
+          <Route path='/join_session' element={<Input />} />
           {userObject ? null : <Route path='/login' element={<GoogleAuth />} />}
         </Routes>
       </div>
