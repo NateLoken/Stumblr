@@ -98,7 +98,7 @@ function Map() {
   }
   const { isLoaded, loadError } = useJsApiLoader({
     id: 'google-maps-script',
-    googleMapsApiKey: "AIzaSyCrVWNBHgiP7ojzbYpLLIYbQ6-7GX9-RkM",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   })
 
