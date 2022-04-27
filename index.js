@@ -71,8 +71,9 @@ passport.use(
           })
           await newUser.save()
           cb(null, newUser)
+        } else {
+          cb(null, doc)
         }
-        cb(null, doc)
       })
     }
   )
@@ -97,13 +98,12 @@ app.get('/getuser', (req, res) => {
 })
 
 app.get('/logout', (req, res) => {
-  if(req.user){
+  if (req.user) {
     req.logout()
-    res.send("done")
+    res.send('done')
   }
 })
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-
-});
+  console.log(`Server running on port ${port}`)
+})

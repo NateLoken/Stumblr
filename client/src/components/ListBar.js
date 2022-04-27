@@ -1,23 +1,52 @@
 // Displays bars in list format for a session
-import React from 'react';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardHeader,
+  Divider,
+  Fab,
+  Stack,
+} from '@mui/material'
+import React from 'react'
+import NavigationIcon from '@mui/icons-material/Navigation'
+import zIndex from '@mui/material/styles/zIndex'
 
-const ListBars = ({ session, deleteSession }) => {
-  return (
-    <ul>
-      {session && session.length > 0 ? (
-        session.map((session) => {
-          return (
-            <li key={session._id} onClick={() => deleteSession(session._id)}>
-              {session.action}
-            </li>
-          );
-        })
-      ) : (
-        <li>No bars in session</li>
-      )}
-    </ul>
-  );
-};
+function ListBars({ session, deleteBar }) {
+  return session.map((session) => {
+    return (
+      <ul key={session._id}>
+        <Stack
+          direction='column'
+          justifyContent='center'
+          spacing={2}
+          divider={<Divider orientation='horizontal' flexItem />}
+        >
+          {session.bars.map((bars) => (
+            <Card>
+              <CardHeader
+                title={bars.name}
+                action={
+                  <Button
+                    color='error'
+                    size='large'
+                    onClick={() => {deleteBar(bars._id)}}
+                  >
+                    Remove
+                  </Button>
+                }
+              />
+              <CardActions>
+                <Button variant='contained' startIcon={<NavigationIcon />}>
+                  Get Directions
+                </Button>
+              </CardActions>
+            </Card>
+          ))}
+        </Stack>
+      </ul>
+    )
+  })
+}
 
-export default ListBars;
-
+export default ListBars

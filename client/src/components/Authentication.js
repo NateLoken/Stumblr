@@ -1,4 +1,3 @@
-import { borders } from '@mui/system'
 import React from 'react'
 import GoogleButton from 'react-google-button'
 
@@ -8,15 +7,23 @@ function GoogleAuth() {
   }
   return (
     <div
-      style={{ view: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      style={{
+        display: '-webkit-flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
     >
-      <h3>Login</h3>
-      <GoogleButton
-        type='light' // can be light or dark
-        onClick={() => {
-          googleLogin()
-        }}
-      />
+      <div>
+        <h3>Login</h3>
+      </div>
+      <div>
+        <GoogleButton
+          type='light' // can be light or dark
+          onClick={() => {
+            googleLogin()
+          }}
+        />
+      </div>
     </div>
   )
 }

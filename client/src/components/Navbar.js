@@ -6,12 +6,13 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction'
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
 import LiquorOutlinedIcon from '@mui/icons-material/LiquorOutlined'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Paper from '@mui/material/Paper'
-import { myContext } from '../Context'
+import { userContext } from '../Context'
 import axios from 'axios'
 export default function SimpleBottomNavigation() {
-  const userContext = useContext(myContext)
+  const userObject = useContext(userContext)
+  const navigate = useNavigate()
   const [value, setValue] = React.useState(0)
 
   const logout = () => {
@@ -19,7 +20,7 @@ export default function SimpleBottomNavigation() {
       .get('http://localhost:5000/logout', { withCredentials: true })
       .then((res) => {
         if (res.data === 'done') {
-          window.location.href = '/'
+          navigate('/')
         }
       })
   }
@@ -47,18 +48,18 @@ export default function SimpleBottomNavigation() {
           <BottomNavigationAction
             Button
             component={Link}
-            to='/find_bars'
+            to='/find_bars/'
             label='Map'
             icon={<MapOutlinedIcon />}
           />
           <BottomNavigationAction
             Button
             component={Link}
-            to='/sessions'
+            to='/sessions/'
             label='Sessions'
             icon={<LiquorOutlinedIcon />}
           />
-          {userContext ? (
+          {userObject ? (
             <BottomNavigationAction
               Button
               label='Log out'
