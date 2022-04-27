@@ -5,12 +5,11 @@ import {
   CardActions,
   CardHeader,
   Divider,
-  Fab,
   Stack,
 } from '@mui/material'
 import React from 'react'
 import NavigationIcon from '@mui/icons-material/Navigation'
-import zIndex from '@mui/material/styles/zIndex'
+// import zIndex from '@mui/material/styles/zIndex'
 
 function ListBars({ session, deleteBar }) {
   return session.map((session) => {
@@ -23,7 +22,7 @@ function ListBars({ session, deleteBar }) {
           divider={<Divider orientation='horizontal' flexItem />}
         >
           {session.bars.map((bars) => (
-            <Card>
+            <Card key={bars._id}>
               <CardHeader
                 title={bars.name}
                 action={

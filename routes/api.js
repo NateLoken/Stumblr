@@ -4,10 +4,8 @@ const Session = require('../models/sessions')
 
 router.get('/sessions/:user', (req, res, next) => {
   // This will return all the data, exposing only the id and action field to the client
-  console.log(req.params.user)
   Session.find({ owner: req.params.user })
     .then((data) => {
-      console.log(data[0]._id)
       res.json(data[0]._id)
     })
     .catch(next)
