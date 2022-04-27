@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import ListBar from './ListBar'
-import { userContext } from '../Context'
-import { useSearchParams } from 'react-router-dom'
 
 function Session() {
   const [session, setSession] = useState([])
@@ -11,7 +9,7 @@ function Session() {
   useEffect(() => {
     setSessionId(window.localStorage.getItem('session_id'))
     getBars(sessionId)
-  })
+  },[sessionId])
 
   function getBars(sessionId) {
     axios.get(`/api/sessions/bars/${sessionId}`).then((res) => {
@@ -37,7 +35,7 @@ function Session() {
       .post(`/api/sessions/bars/${barId}`)
       .then((res) => {
         if (res.data) {
-          getBars()
+          getBars(sessionId)
         }
       })
       .catch((err) => console.log(err))
