@@ -4,18 +4,22 @@ import Session from './components/Session'
 import FindBars from './components/FindBars'
 import Navbar from './components/Navbar'
 import GoogleAuth from './components/Authentication'
-import { myContext } from './Context'
+import Homepage from './components/Homepage'
+import Input from './components/Input'
+import { userContext } from './Context'
 import "./App.css";
 const App = () => {
-  const userObject = useContext(myContext)
+  const userObject = useContext(userContext)
   console.log(userObject)
   return (
     <Router>
       <div className='App'>
         <Navbar />
         <Routes>
-          <Route path='/find_bars' exact element={<FindBars />} />
+          <Route path='/' exact element={<Homepage />} />
+          <Route path='/find_bars' element={<FindBars />} />
           <Route path='/sessions' element={<Session />} />
+          <Route path='/join_session' element={<Input />} />
           {userObject ? null : <Route path='/login' element={<GoogleAuth />} />}
         </Routes>
       </div>

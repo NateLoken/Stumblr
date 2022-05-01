@@ -1,3 +1,4 @@
+import axios from 'axios'
 import * as React from 'react'
 import { styled } from '@mui/material/styles'
 import Card from '@mui/material/Card'
@@ -9,6 +10,8 @@ import Rating from '@mui/material/Rating'
 import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined'
 import SportsBarOutlinedIcon from '@mui/icons-material/SportsBarOutlined'
 import SportsBarIcon from '@mui/icons-material/SportsBar'
+import { Alert, AlertTitle, IconButton } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
 
 const StyledPricing = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -22,8 +25,30 @@ const StyledRating = styled(Rating)({
   },
 })
 
-function ListBars({ bars }) {
-  console.log(bars)
+function ListBars({ bars, session_id }) {
+  function addBar(session_id, name, location) {
+    const session = {
+      id: session_id,
+      bars: {
+        name: name,
+        location: location,
+      },
+    }
+
+    if (session.id && session.id.length > 0) {
+      axios
+        .post('/api/sessions/bars', session)
+        .then((res) => {
+          if (res.status === 200) {
+            <Alert severity='success'>
+              <AlertTitle>Success</AlertTitle>
+              {name} has been added to session
+            </Alert>
+          }
+        })
+        .catch((err) => console.log(err))
+    }
+  }
 
   return (
     <ul>
@@ -32,7 +57,19 @@ function ListBars({ bars }) {
           return (
             <li key={bars.place_id}>
               <Card>
-                <CardHeader title={bars.name} />
+                <CardHeader
+                  title={bars.name}
+                  action={
+                    <IconButton
+                      color='primary'
+                      onClick={() => {
+                        addBar(session_id, bars.name, bars.geometry.location)
+                      }}
+                    >
+                      <AddIcon />
+                    </IconButton>
+                  }
+                />
                 <Divider />
                 <CardContent>
                   <Typography variant='body1' color='text.secondary'>
