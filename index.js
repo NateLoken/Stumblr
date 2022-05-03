@@ -12,8 +12,8 @@ const port = process.env.PORT || 5000
 const path = require("path");
 
 require('dotenv').config()
-require("./models/quote");
-require("./routes/quoteRoute.js")(app);
+// require("./models/quote");
+// require("./routes/quoteRoute.js")(app);
 
 // app.use(cors());
 
