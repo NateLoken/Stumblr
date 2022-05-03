@@ -11,6 +11,10 @@ router.get('/sessions/:user', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/', function(req, res, next) {  
+  res.status(200).send("Hi, It works!")  
+}); 
+
 router.post('/sessions', (req, res, next) => {
   if (req.body.owner) {
     Session.create(req.body)
