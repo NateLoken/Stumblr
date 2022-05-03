@@ -11,6 +11,7 @@ router.get('/sessions/:user', (req, res, next) => {
     .catch(next)
 })
 
+// test
 router.get('/', function(req, res, next) {  
   res.status(200).send("Hi, It works!")  
 }); 
