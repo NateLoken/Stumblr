@@ -1,9 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import App from './App'
-import Context from './Context'
-import reportWebVitals from './reportWebVitals'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import Context from './Context';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,4 +15,6 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-reportWebVitals()
+// Register allows app to work offline
+serviceWorkerRegistration.register();
+reportWebVitals();
