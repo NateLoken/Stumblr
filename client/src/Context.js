@@ -8,7 +8,7 @@ function Context(props) {
   const [userObject, setUserObject] = useState()
 
   useEffect(() => {
-    axios.get("http://localhost:5000/getuser", { withCredentials: true })
+    axios.get("/getuser", { withCredentials: true })
       .then((res) => {
         if(res.data) {
           setUserObject(res.data)
