@@ -9,9 +9,17 @@ import {
 } from '@mui/material'
 import React from 'react'
 import NavigationIcon from '@mui/icons-material/Navigation'
+import { useNavigate } from "react-router-dom";
 // import zIndex from '@mui/material/styles/zIndex'
 
 function ListBars({ session, deleteBar }) {
+
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/find_bars/`; 
+    navigate(path);
+  }
+
   return session.map((session) => {
     return (
       <ul key={session._id}>
@@ -36,7 +44,7 @@ function ListBars({ session, deleteBar }) {
                 }
               />
               <CardActions>
-                <Button variant='contained' startIcon={<NavigationIcon />}>
+                <Button variant='contained' startIcon={<NavigationIcon />} onClick={() => {routeChange();}}>
                   Get Directions
                 </Button>
               </CardActions>

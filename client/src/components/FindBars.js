@@ -1,13 +1,6 @@
 import React, { useEffect } from 'react'
 import ListBars from './BarList'
 import {
-  HStack,
-  IconButton,
-  Input,
-  Text,
-} from '@chakra-ui/react'
-import {
-  Autocomplete,
   GoogleMap,
   InfoWindow,
   Marker,
@@ -80,6 +73,9 @@ function Map() {
   const [ratingRange, setRatingRange] = React.useState([1,5]);
   const [priceRange, setPriceRange] = React.useState([0, 4]);
 
+  const [searchName, setSearchName] = React.useState("");
+  const [ratingRange, setRatingRange] = React.useState([1,5]);
+  const [priceRange, setPriceRange] = React.useState([0, 4]);
   useEffect(() => {
     setSessionId(window.localStorage.getItem('session_id'))
   }, [])
@@ -118,13 +114,15 @@ function Map() {
   /** @type React.MutableRefObject<HTMLInputElement> */
   // const destinationRef = React.useRef()
 
-  const handleDestinationChange = (e) => {
+  function handleDestinationChange(e) {
     setDestination(e.target.value)
   }
 
+  //bars[0].geometry.location
+
+
   async function calculateRoute() {
     if (destination === '') {
-      console.log('test')
       return
     }
     // eslint-disable-next-line no-undef
@@ -314,4 +312,4 @@ function Map() {
   )
 }
 
-export default React.memo(Map)
+export default React.memo(Map);
