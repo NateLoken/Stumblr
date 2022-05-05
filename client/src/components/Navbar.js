@@ -17,7 +17,7 @@ export default function SimpleBottomNavigation() {
 
   const logout = () => {
     axios
-      .get('http://localhost:5000/logout', { withCredentials: true })
+      .get('/logout', { withCredentials: true })
       .then((res) => {
         if (res.data === 'done') {
           navigate('/')

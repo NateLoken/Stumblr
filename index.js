@@ -26,6 +26,8 @@ mongoose
 // Middleware
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, './client/build')));
 app.use(express.json())
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }))
 app.use(
@@ -92,7 +94,7 @@ app.get(
   passport.authenticate('google', { failureRedirect: '/Login' }),
   function (req, res) {
     // Successful authentication, redirect secrets.
-    res.redirect('/')
+    res.redirect(req.baseUrl + '/')
   }
 )
 
