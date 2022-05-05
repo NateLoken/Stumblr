@@ -64,6 +64,9 @@ function Map() {
   const [bars, setBars] = React.useState([])
   const [session_id, setSessionId] = React.useState(null)
 
+  // "627413ac6c0d5da72f6f2c0e"
+  console.log("session_id: " + session_id)
+
   useEffect(() => {
     setSessionId(window.localStorage.getItem('session_id'))
   },[])

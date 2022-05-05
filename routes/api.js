@@ -28,6 +28,7 @@ router.post('/sessions', (req, res, next) => {
   }
 })
 
+// Tested: find, findOne, findById
 router.get('/sessions/bars/:session_id', (req, res, next) => {
   Session.find({ _id: req.params.session_id }, 'bars')
     .then((data) => {

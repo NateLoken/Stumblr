@@ -92,7 +92,7 @@ app.get(
   passport.authenticate('google', { failureRedirect: '/Login' }),
   function (req, res) {
     // Successful authentication, redirect secrets.
-    res.redirect('http://localhost:3000')
+    res.redirect('/')
   }
 )
 
