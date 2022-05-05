@@ -6,7 +6,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 
 function GoogleAuth() {
   const googleLogin = () => {
-    window.open('/auth/google', '_self')
+    window.open('/_auth/google', '_self')
   }
   return (
     <div

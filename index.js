@@ -12,10 +12,6 @@ const port = process.env.PORT || 5000
 const path = require("path");
 
 require('dotenv').config()
-// require("./models/quote");
-// require("./routes/quoteRoute.js")(app);
-
-// app.use(cors());
 
 // Connect to the database
 mongoose
@@ -24,8 +20,6 @@ mongoose
   .catch((err) => console.log(err))
 
 // Middleware
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, './client/build')));
 app.use(express.json())
@@ -58,7 +52,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: '/auth/google/callback',
+      callbackURL: '/_auth/google/callback',
       // userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
     },
     // Called on successful authenication
@@ -85,12 +79,12 @@ passport.use(
 )
 
 app.get(
-  '/auth/google',
+  '/_auth/google',
   passport.authenticate('google', { scope: ['email', 'profile'] })
 )
 
 app.get(
-  '/auth/google/callback',
+  '/_auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/Login' }),
   function (req, res) {
     // Successful authentication, redirect secrets.
