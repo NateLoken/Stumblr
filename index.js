@@ -52,7 +52,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: '/_auth/google/callback',
+      callbackURL: 'https://stumblrrrr.herokuapp.com/_auth/google/callback',
       // userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
     },
     // Called on successful authenication
