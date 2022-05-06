@@ -14,6 +14,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 )
+
 // Register allows app to work offline
 serviceWorkerRegistration.register();
-reportWebVitals()
+reportWebVitals();
