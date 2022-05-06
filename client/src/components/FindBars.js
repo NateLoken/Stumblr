@@ -68,16 +68,11 @@ function Map() {
   const [selected, setSelected] = React.useState(null)
   const [bars, setBars] = React.useState([])
   const [session_id, setSessionId] = React.useState(null)
-<<<<<<< HEAD
 
-  // "627413ac6c0d5da72f6f2c0e"
-  console.log("session_id: " + session_id)
-
-=======
   const [searchName, setSearchName] = React.useState("");
   const [ratingRange, setRatingRange] = React.useState([1,5]);
   const [priceRange, setPriceRange] = React.useState([0, 4]);
->>>>>>> 7ea16206861a0e9eb5be1cd32ff100545f2e5999
+
   useEffect(() => {
     setSessionId(window.localStorage.getItem('session_id'))
   },[])
