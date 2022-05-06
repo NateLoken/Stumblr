@@ -25,7 +25,8 @@ const StyledRating = styled(Rating)({
   },
 })
 
-function ListBars({ bars, session_id }) {
+function ListBars({ bars, session_id, searchName, ratingRange, priceRange }) {
+
   function addBar(session_id, name, location) {
     const session = {
       id: session_id,
@@ -53,7 +54,14 @@ function ListBars({ bars, session_id }) {
   return (
     <ul>
       {bars && bars.length > 0 ? (
-        bars.map((bars) => {
+        bars
+        .filter((item)=>
+        item.name.toLowerCase().includes(searchName.toLowerCase()) &&
+        (item.price_level >= priceRange[0] &&
+        item.price_level <= priceRange[1]) &&
+        (item.rating >= ratingRange[0] &&
+          item.rating <= ratingRange[1])
+        ).map((bars) => {
           return (
             <li key={bars.place_id}>
               <Card>
