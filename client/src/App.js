@@ -9,9 +9,10 @@ import Input from './components/Input'
 import { userContext } from './Context'
 import "./App.css";
 const App = () => {
+  // get userContext
   const userObject = useContext(userContext)
-  console.log(userObject)
   return (
+    /* The router handles the url routes and what routes are connected to which components */
     <Router>
       <div className='App'>
         <Navbar />
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/find_bars' element={<FindBars />} />
           <Route path='/sessions' element={<Session />} />
           <Route path='/join_session' element={<Input />} />
+          {/* This checks to make sure a user that is logged in already can't access the login page */}
           {userObject ? null : <Route path='/login' element={<GoogleAuth />} />}
         </Routes>
       </div>

@@ -1,3 +1,4 @@
+//This is the file that holds all the map styling information
 export default [
     {
         "featureType": "landscape.man_made",

@@ -20,7 +20,7 @@ mongoose
   .then(() => console.log(`Database connected successfully`))
   .catch((err) => console.log(err))
 
-// Middleware
+// Middleware setup
 app.use(express.json())
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }))
 app.use(
@@ -38,16 +38,20 @@ app.use('/api', routes)
 app.use(passport.initialize())
 app.use(passport.session())
 
+// The serializeUser function takes the user data uses the callback done to serialize the user information i.e. the id and returns it
+// this is done to protect user identities
 passport.serializeUser((user, done) => {
   return done(null, user._id)
 })
 
+// The deserializeUser functions works in the reverse, by finding the user via the id and returning their user information
 passport.deserializeUser((id, done) => {
   User.findById(id, (err, doc) => {
     return done(null, doc)
   })
 })
 
+// The google Strategy outlines the needed information to make the google authenication process to work
 passport.use(
   new GoogleStrategy(
     {
@@ -57,7 +61,7 @@ passport.use(
       // userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
     },
     // Called on successful authenication
-    // Insert into database
+    // Insert user into database if not there already
     function (accessToken, refreshToken, profile, cb) {
       User.findOne({ googleId: profile.id }, async (err, doc) => {
         if (err) {
@@ -93,10 +97,12 @@ app.get(
   }
 )
 
+// Gets users information and returns it
 app.get('/getuser', (req, res) => {
   res.send(req.user)
 })
 
+// Logs the user out by destroying their session
 app.get('/logout', (req, res) => {
   if (req.user) {
     req.logout()
@@ -104,6 +110,7 @@ app.get('/logout', (req, res) => {
   }
 })
 
+// Starts the app on the server defined in the .env file
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)
 })

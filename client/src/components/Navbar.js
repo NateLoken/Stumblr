@@ -1,20 +1,28 @@
 import * as React from 'react'
+import axios from 'axios'
 import { useContext } from 'react'
-import Box from '@mui/material/Box'
-import BottomNavigation from '@mui/material/BottomNavigation'
-import BottomNavigationAction from '@mui/material/BottomNavigationAction'
+import {
+  Box,
+  BottomNavigation,
+  BottomNavigationAction,
+  Paper,
+} from '@mui/material'
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
 import LiquorOutlinedIcon from '@mui/icons-material/LiquorOutlined'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
 import { Link, useNavigate } from 'react-router-dom'
-import Paper from '@mui/material/Paper'
 import { userContext } from '../Context'
-import axios from 'axios'
+
+// This component displays the Navigation bar at the bottom of the page
 export default function SimpleBottomNavigation() {
+  // Instantiation of variables
   const userObject = useContext(userContext)
   const navigate = useNavigate()
   const [value, setValue] = React.useState(0)
 
+  /*
+    logout doesn't take any parameters, it simply calls the logout function using the api and axios and then redirects the user back to the homepage
+  */
   const logout = () => {
     axios
       .get('http://localhost:5000/logout', { withCredentials: true })
@@ -38,6 +46,7 @@ export default function SimpleBottomNavigation() {
         }}
         elevation={15}
       >
+        {/* Links to all the components in the application */}
         <BottomNavigation
           showLabels
           value={value}
@@ -59,6 +68,7 @@ export default function SimpleBottomNavigation() {
             label='Sessions'
             icon={<LiquorOutlinedIcon />}
           />
+          {/* This small function uses the user context to determine if a user is logged in or not, if they are then the logout button is displayed and if not then the log in button is displayed */}
           {userObject ? (
             <BottomNavigationAction
               Button

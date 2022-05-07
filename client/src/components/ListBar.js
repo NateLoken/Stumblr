@@ -10,10 +10,16 @@ import {
 import React from 'react'
 import NavigationIcon from '@mui/icons-material/Navigation'
 import { useNavigate } from 'react-router-dom'
-// import zIndex from '@mui/material/styles/zIndex'
 
+/* ListBars lists all the bars that are in the users session */
 function ListBars({ session, deleteBar }) {
   let navigate = useNavigate()
+
+  /*
+    routeChange takes 1 parameter:
+      barLocation: lat, lng object
+    routeChange redirects the user to the map while changing the state within the global location variable to the barLocation object
+  */
   const routeChange = (barLocation) => {
     navigate('/find_bars', {
       state: {
@@ -22,6 +28,9 @@ function ListBars({ session, deleteBar }) {
     })
   }
 
+  /*
+    This function maps through the session and to create a list of all the bars in the session
+  */
   return session.map((session) => {
     return (
       <ul key={session._id}>
@@ -31,6 +40,10 @@ function ListBars({ session, deleteBar }) {
           spacing={2}
           divider={<Divider orientation='horizontal' flexItem />}
         >
+          {/* 
+            This map function creates the individual cards to display bar name as well a button to remove the bar from the session
+            as well as a button to that calls the routeChange function to get directions to the bar 
+          */}
           {session.bars.map((bars) => (
             <Card key={bars._id}>
               <CardHeader

@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Alert, AlertTitle, TextField, Button } from '@mui/material'
 import axios from 'axios'
+import { Alert, AlertTitle, TextField, Button } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import { Box } from '@mui/system'
 
+// The input function finds another users session and join it
 export default function Input() {
   const [username, setUsername] = useState('')
   const navigate = useNavigate()
 
+  /*
+    userSeach doesn't take any parameters, it uses the username state that is set by the TextField and creates a user object which is then used a search parameter for the api request
+    if a user is found then the session id is returned and set into local storage and then the user is redirected to the sessions page. If not then an alert pops up telling the user
+    that the person they were searching for wasn't found and the search string is reset
+  */
   const userSearch = () => {
     const user = username
 
@@ -15,7 +21,6 @@ export default function Input() {
       axios
         .get(`/api/sessions/${user}`)
         .then((res) => {
-          console.log(res)
           if (res.data) {
             window.localStorage.setItem('session_id', res.data)
             setUsername('')
@@ -34,6 +39,7 @@ export default function Input() {
     }
   }
 
+  // handleChange changes the value of the username which will be searched for when a user starts typing in the TextField
   const handleChange = (e) => {
     setUsername(e.target.value)
   }
@@ -63,47 +69,3 @@ export default function Input() {
     </Box>
   )
 }
-
-// class Input extends Component {
-//   state = {
-//     action: '',
-//   };
-//
-//   addBar = () => {
-//     // console.log(this.state.action)
-//     const task = { action: this.state.action };
-//
-//     if (task.action && task.action.length > 0) {
-//       axios
-//         .post('/api/sessions', task)
-//         .then((res) => {
-//           if (res.data) {
-//             this.props.getBars();
-//             this.setState({ action: '' });
-//           }
-//         })
-//         .catch((err) => console.log(err));
-//     } else {
-//       console.log('input field required');
-//     }
-//   };
-//
-//   handleChange = (e) => {
-//     this.setState({
-//       action: e.target.value,
-//     });
-//   };
-//
-//   render() {
-//     let { action } = this.state;
-//     return (
-//       <div>
-//         <input type="text" onChange={this.handleChange} value={action} />
-//         <button onClick={this.addBar}>add bar</button>
-//       </div>
-//     );
-//   }
-// }
-//
-// export default Input;
-//
